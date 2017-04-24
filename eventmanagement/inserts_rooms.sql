@@ -1,5 +1,5 @@
 INSERT INTO `eventmanagement`.`rooms`
-(`room_name`,
+(`name`,
 `location`)
 VALUES
 ('Sal 1',
