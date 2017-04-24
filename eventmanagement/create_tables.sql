@@ -41,7 +41,6 @@ CREATE TABLE events (
     CONSTRAINT FK_event_event FOREIGN KEY(parent_event_id) REFERENCES events(id)
 );
 
-
 CREATE TABLE events_persons (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     event_id INT NOT NULL,
