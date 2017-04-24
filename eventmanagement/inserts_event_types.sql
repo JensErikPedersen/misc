@@ -1,0 +1,27 @@
+INSERT INTO `eventmanagement`.`event_types`
+(`name`,
+`max_participants`,
+`waiting_list`,
+`room_id`)
+VALUES
+('Boksning',
+10,
+true,
+2),
+('Spinning',
+25,
+true,
+1),
+('TRX',
+10,
+true,
+2),
+('Yoga',
+12,
+true,
+2),
+('Bodypump',
+12,
+true,
+2)
+;

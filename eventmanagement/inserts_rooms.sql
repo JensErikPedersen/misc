@@ -2,12 +2,8 @@ INSERT INTO `eventmanagement`.`rooms`
 (`name`,
 `location`)
 VALUES
-('Sal 1',
-'Humlebæk'),
-('Sal 2',
-'Humlebæk'),
-('Workout 1',
-'Fredensborg'),
-('Workout 2',
-'Fredensborg')
+('Spinning',
+'Ballerup'),
+('Fitness',
+'Ballerup')
 ;

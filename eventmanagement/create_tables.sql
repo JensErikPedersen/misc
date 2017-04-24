@@ -35,7 +35,7 @@ CREATE TABLE events (
     start_time time NOT NULL,
     end_time time NOT NULL,
     instructor_id INT NOT NULL,
-    parent_event_id INT,
+    parent_event_id INT DEFAULT NULL,
     CONSTRAINT FK_event_persons FOREIGN KEY(instructor_id) REFERENCES persons(id),
     CONSTRAINT FK_event_eventtypes FOREIGN KEY(event_type_id) REFERENCES event_types(id) ON DELETE CASCADE,
     CONSTRAINT FK_event_event FOREIGN KEY(parent_event_id) REFERENCES events(id)
