@@ -6,5 +6,4 @@ VALUES
 'Ballerup'),
 ('Fitness',
 'Ballerup')
-
 ;

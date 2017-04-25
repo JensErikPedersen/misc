@@ -97,6 +97,12 @@ now()),
 'rup@andeby.org',
 '',
 now(),
+now()),
+('Vakse',
+'Viggo',
+'VVI',
+'vakse@viggo.org',
+'25896314',
+now(),
 now())
-
 ;

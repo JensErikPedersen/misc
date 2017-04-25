@@ -2,6 +2,7 @@ CREATE DATABASE eventmanagement;
 
 USE eventmanagement;
 
+# CREATE TABLES
 CREATE TABLE persons (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     first_name nvarchar(20) NOT NULL,
@@ -60,3 +61,38 @@ CREATE TABLE logs (
     source nvarchar(20),
     created datetime NOT NULL    
 );
+
+
+# VALIDATOR FUNCTION FOR events_persons status FIELD
+DELIMITER $$
+CREATE FUNCTION F_events_persons_validate_status(status char)
+RETURNS TINYINT(1)
+DETERMINISTIC
+BEGIN
+	IF(status = 'P' OR status = 'W' OR status = 'C') THEN
+		RETURN 1;
+    END IF;
+    RETURN 0;
+       
+END$$
+
+DELIMITER;
+
+
+# Trigger handling invalid values in status field on table event_types. Only necessary since MySQL do not support CHECK option
+DELIMITER $$
+
+CREATE TRIGGER TRG_events_persons_validate_status BEFORE INSERT ON events_persons 
+FOR EACH ROW
+BEGIN
+	DECLARE msg nvarchar(255);
+    SET msg = CONCAT('ERROR: Invalid value for status "', new.status, '". Allowed values are P, W and C');
+  
+	IF(F_events_persons_validate_status(new.status)=0) THEN
+		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END$$
+
+DELIMITER;
+
+
