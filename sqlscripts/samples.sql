@@ -34,6 +34,7 @@ WHERE ep.status='P'
 ORDER BY ev.event_date, ev.start_time;
 
 
+
 # INSERT THAT SHOULD FAIL DUE TO INVALID status VALUE eg. 'Q'
 INSERT INTO `eventmanagement`.`events_persons`
 (`event_id`,
@@ -51,19 +52,13 @@ current_timestamp());
 
 # Trigger handling invalid values in status field on table event_types. Only necessary since MySQL do not support CHECK option
 # SEE create_tables script file for version implementing a FUNCTION
-DELIMITER $$
-
-CREATE TRIGGER TRG_events_persons_validate_status BEFORE INSERT ON events_persons 
-FOR EACH ROW
-BEGIN
-	DECLARE msg nvarchar(255);
-    SET msg = CONCAT('ERROR: Invalid value for status "', new.status, '". Allowed values are P, W and C');
-    IF(new.status != 'P' OR new.status != 'W' OR new.status != 'C') THEN
-		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
-    END IF;
-END$$
-DELIMITER;
 
 DROP TRIGGER TRG_events_persons_validate_status;
 
 DROP FUNCTION F_events_persons_validate_status;
+
+
+SELECT * FROM view_all_events WHERE name LIKE 'Boksning';
+
+DROP VIEW view_all_events;
+

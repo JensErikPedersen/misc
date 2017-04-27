@@ -1,3 +1,5 @@
+ALTER TABLE events_persons AUTO_INCREMENT=1;
+
 INSERT INTO `eventmanagement`.`events_persons`
 (`event_id`,
 `person_id`,

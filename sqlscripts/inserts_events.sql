@@ -1,3 +1,5 @@
+ALTER TABLE events AUTO_INCREMENT=1;
+
 INSERT INTO `eventmanagement`.`events`
 (`event_type_id`,
 `event_date`,
@@ -31,3 +33,4 @@ NULL),
 5,
 NULL)
 ;
+

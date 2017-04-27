@@ -1,3 +1,5 @@
+ALTER TABLE persons AUTO_INCREMENT=1;
+
 INSERT INTO `eventmanagement`.`persons`
 (`first_name`,
 `last_name`,
