@@ -15,7 +15,7 @@ DELIMITER ;
 
 # VALIDATOR FUNCTION FOR events status FIELD
 DELIMITER $$
-CREATE FUNCTION F_events_validate_status(statuc char)
+CREATE FUNCTION F_events_validate_status(status char)
 RETURNS TINYINT(1)
 DETERMINISTIC
 BEGIN

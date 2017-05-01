@@ -1,10 +1,10 @@
 use eventmanagement;
 
-DELETE FROM events;
+DELETE FROM persons;
 
 SELECT * FROM rooms;
 
-ALTER TABLE events_persons AUTO_INCREMENT=46;
+ALTER TABLE persons AUTO_INCREMENT=1;
 
 DROP DATABASE eventmanagement;
 
@@ -13,6 +13,8 @@ select * from event_types;
 SELECT * FROM persons;
 
 SELECT * FROM events;
+
+SELECT * FROM events_persons;
 
 UPDATE events SET parent_event_id = NULL;
 
@@ -50,15 +52,43 @@ current_timestamp(),
 current_timestamp());
 
 
+INSERT INTO `eventmanagement`.`events`
+(`event_type_id`,
+`event_date`,
+`start_time`,
+`end_time`,
+`instructor_id`,
+`parent_event_id`)
+VALUES
+(1,
+'2017-05-01',
+'15:10',
+'16:10',
+1,
+NULL);
+
 # Trigger handling invalid values in status field on table event_types. Only necessary since MySQL do not support CHECK option
 # SEE create_tables script file for version implementing a FUNCTION
 
 DROP TRIGGER TRG_events_persons_validate_status;
 
+DROP TRIGGER TRG_events_validate_status;
+
 DROP FUNCTION F_events_persons_validate_status;
 
+DROP FUNCTION F_events_validate_status;
 
-SELECT * FROM view_all_events WHERE name LIKE 'Boksning';
+SELECT * FROM view_all_events;
+
+SELECT * FROM view_all_registrations;
+
+DROP VIEW view_all_registrations;
 
 DROP VIEW view_all_events;
 
+
+SELECT * from event_types;
+
+DELETE from event_types;
+
+DROP TABLE events;
