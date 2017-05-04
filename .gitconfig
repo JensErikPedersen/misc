@@ -1,7 +1,7 @@
 [core]
 	editor = vim
 	autocrlf = true
-	safecrlf = true
+	safecrlf = warn
 [user]
 	name = EKY
 	email = eky@topdanmark.dk
