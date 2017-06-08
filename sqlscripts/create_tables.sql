@@ -11,13 +11,15 @@ CREATE TABLE persons (
     email nvarchar(25),
     mobile_phone nvarchar(30),
     created datetime NOT NULL,
-    modified timestamp NOT NULL
+    modified timestamp NOT NULL,
+    UNIQUE(userid)
 );
 
 CREATE TABLE rooms (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name nvarchar(20),
-    location nvarchar(20)
+    name nvarchar(20) NOT NULL ,
+    location nvarchar(20) NOT NULL,
+    max_participants INT NOT NULL 
 );
 
 CREATE TABLE event_types (
