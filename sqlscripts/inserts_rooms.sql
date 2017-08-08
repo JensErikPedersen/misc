@@ -2,10 +2,13 @@ ALTER TABLE rooms AUTO_INCREMENT=1;
 
 INSERT INTO `eventmanagement`.`rooms`
 (`name`,
-`location`)
+`location`,
+`max_participants`)
 VALUES
 ('Spinning',
-'Ballerup'),
+'Ballerup',
+25),
 ('Fitness',
-'Ballerup')
+'Ballerup',
+12)
 ;
