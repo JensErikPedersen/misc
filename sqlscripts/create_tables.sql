@@ -35,9 +35,8 @@ CREATE TABLE event_types (
 CREATE TABLE events (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     event_type_id INT NOT NULL,
-    event_date date NOT NULL,
-    start_time time NOT NULL,
-    end_time time NOT NULL,
+    start_datetime date NOT NULL,
+    end_datetime date NOT NULL,
     instructor_id INT NOT NULL,
     parent_event_id INT DEFAULT NULL,
     status char(1) NOT NULL DEFAULT 'S',
