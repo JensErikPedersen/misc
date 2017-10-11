@@ -1,14 +1,18 @@
-ALTER TABLE rooms AUTO_INCREMENT=1;
+USE eventmanagement;
+GO
 
-INSERT INTO `eventmanagement`.`rooms`
-(`name`,
-`location`,
-`max_participants`)
+INSERT INTO rooms
+(name,
+location,
+max_participants)
 VALUES
-('Spinning',
-'Ballerup',
+('Spinning salen',
+'Hørsholm',
 25),
-('Fitness',
-'Ballerup',
-12)
+('Bokse salen',
+'Valby',
+15),
+('Yoga salen',
+'Humlebæk',
+20)
 ;

@@ -1,32 +1,31 @@
-# Trigger handling invalid values in status field on table event_types. Only necessary since MySQL do not support CHECK option
-DELIMITER $$
+/*
+	CREATE TRIGGER to validate that an eventtype max_participants do NOT exceed the room capacity on the selected room
+*/
 
-CREATE TRIGGER TRG_events_persons_validate_status BEFORE INSERT ON events_persons 
-FOR EACH ROW
+USE eventmanagement;
+GO
+
+CREATE TRIGGER TRG_validate_max_participants ON event_types
+INSTEAD OF INSERT
+AS
 BEGIN
-	DECLARE msg nvarchar(255);
-    SET msg = CONCAT('ERROR: Invalid value for status "', new.status, '". Allowed values are P, W and C');
-  
-	IF(F_events_persons_validate_status(new.status)=0) THEN
-		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
-    END IF;
-END$$
+	DECLARE @room_max AS TINYINT;
+	DECLARE @room_id INT;
 
-DELIMITER ;
+	SET @room_id = (SELECT r.id FROM rooms r WHERE inserted.room_id = r.id);
+	PRINT @room_id;
 
-DELIMITER $$
 
-CREATE TRIGGER TRG_events_validate_status BEFORE INSERT ON events
-FOR EACH ROW
-BEGIN
-	DECLARE msg nvarchar(255);
-    SET msg = CONCAT('ERROR: Invalid value for status "', new.status, '". Allowed values are S and C');
-    
-    IF(F_events_validate_status(new.status)=0) THEN
-		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
-	END IF;
-END$$
+END;
 
-DELIMITER ;
+
+/*
+	CREATE TRIGGER to add created date on events_members AFTER INSERTING
+*/
+
+
+/*
+	CREATE TRIGGER to add modified date on events_members AFTER UPDATE
+*/
 
 
