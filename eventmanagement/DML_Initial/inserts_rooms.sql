@@ -1,18 +1,19 @@
-USE eventmanagement;
+USE fitnesscenter;
 GO
 
-INSERT INTO rooms
-(name,
-location,
-max_participants)
+INSERT INTO rooms (
+	name,
+	max_participants,
+	center_id
+)
 VALUES
 ('Spinning salen',
-'Hørsholm',
-25),
+8,
+1),
 ('Bokse salen',
-'Valby',
-15),
+6,
+1),
 ('Yoga salen',
-'Humlebæk',
-20)
+5,
+1)
 ;
