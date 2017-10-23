@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 USE eventmanagement;
 GO
 
@@ -34,4 +35,33 @@ VALUES
 20,
 1,
 4)
+=======
+USE fitnesscenter;
+
+INSERT INTO event_types (
+    name,
+    max_participants,
+    waiting_list,
+    room_id
+)
+VALUES
+(
+	'Boksning',
+	6,
+	1,
+	1
+),
+(
+	'Spinning',	
+	7,
+	1,
+	1
+),
+(
+	'Yoga',	
+	5,
+	1,
+	1
+)
+>>>>>>> 7f7e5583379a35d3f5ccf5ab7946874af0ba13c6
 ;
