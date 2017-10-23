@@ -1,35 +1,37 @@
-ALTER TABLE event_types AUTO_INCREMENT=1;
+USE eventmanagement;
+GO
 
-INSERT INTO `eventmanagement`.`event_types`
-(`name`,
-`event_type_prefix`, 
-`max_participants`,
-`waiting_list`,
-`room_id`)
+
+INSERT INTO event_types
+(name,
+event_type_prefix, 
+max_participants,
+waiting_list,
+room_id)
 VALUES
 ('Boksning',
 'BOX',
 10,
-true,
+1,
 2),
 ('Spinning',
 'SPN',
 25,
-true,
+0,
 1),
 ('TRX',
 'TRX',
 10,
-true,
+1,
 2),
 ('Yoga',
 'YGA',
-12,
-true,
-2),
+15,
+0,
+3),
 ('Bodypump',
 'BPU',
-12,
-true,
-2)
+20,
+1,
+4)
 ;

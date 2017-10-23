@@ -11,8 +11,11 @@ VALUES
 25),
 ('Bokse salen',
 'Valby',
-15),
+10),
 ('Yoga salen',
+'Humlebæk',
+15),
+('Fitness salen',
 'Humlebæk',
 20)
 ;

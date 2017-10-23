@@ -23,6 +23,14 @@ END;
 	CREATE TRIGGER to add created date on events_members AFTER INSERTING
 */
 
+CREATE TRIGGER TRG_set_createddate_insert ON event_members
+AFTER INSERT
+AS
+BEGIN
+	
+
+END;
+
 
 /*
 	CREATE TRIGGER to add modified date on events_members AFTER UPDATE
