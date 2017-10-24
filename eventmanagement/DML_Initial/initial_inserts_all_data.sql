@@ -1,21 +1,18 @@
 USE fitnesscenter;
 
 DBCC CHECKIDENT ('[center]', RESEED, 1);
-DBCC CHECKIDENT ('[rooms]', RESEED, 1);
-DBCC CHECKIDENT ('[staff]', RESEED, 1);
-DBCC CHECKIDENT ('[members]', RESEED, 1);
-DBCC CHECKIDENT ('[events]', RESEED, 1);
-DBCC CHECKIDENT ('[event_types]', RESEED, 1);
-DBCC CHECKIDENT ('[registrations]', RESEED, 1);
+DBCC CHECKIDENT ('[sal]', RESEED, 1);
+DBCC CHECKIDENT ('[medarbejder]', RESEED, 1);
+DBCC CHECKIDENT ('[medlem]', RESEED, 1);
+DBCC CHECKIDENT ('[hold]', RESEED, 1);
+DBCC CHECKIDENT ('[holdtype]', RESEED, 1);
+DBCC CHECKIDENT ('[tilmelding]', RESEED, 1);
 GO
 
 BEGIN TRANSACTION tran_insert_initial;
 
 -- INSERT zipcodes
-INSERT INTO zipcodes (
-zipcode,
-city
-)
+INSERT INTO postnummer
 VALUES (
 	3050,
 	'Humlebæk'
@@ -29,10 +26,10 @@ VALUES (
 
 -- INSERT center
 INSERT INTO center(
-	name,
-	address,
-	zipcode,
-	phonenumber
+	navn,
+	adresse,
+	postnr,
+	telefonnummer
 )
 VALUES (
 	'TopFitness Humlebæk',
@@ -42,9 +39,9 @@ VALUES (
 );
 
 -- INSERT rooms
-INSERT INTO rooms (
-	name,
-	max_participants,
+INSERT INTO sal(
+	navn,
+	kapacitet,
 	center_id
 )
 VALUES (
@@ -62,15 +59,15 @@ VALUES (
 );
 
 -- INSERT staff
-INSERT INTO staff (
-	first_name,
-	last_name,
-	address,
-	zipcode,
-	mobile_phone,
+INSERT INTO medarbejder(
+	fornavn,
+	efternavn,
+	adresse,
+	postnr,
+	mobilnummer,
 	type,
 	center_id,
-	manager_id
+	leder_id
 )
 VALUES (
 	'Frede',
@@ -154,13 +151,13 @@ VALUES (
 )
 
 -- INSERT members
-INSERT INTO members(
-	first_name,
-	last_name,
-	address,
-	zipcode,
+INSERT INTO medlem(
+	fornavn,
+	efternavn,
+	adresse,
+	postnr,
 	email,
-	mobile_phone
+	mobilnummer
 )
 VALUES (
 	'Jørgen',
@@ -244,35 +241,39 @@ VALUES (
 );
 
 -- INSERT event_types
-INSERT INTO event_types (
-    name,    
-    waiting_list,
-    room_id
+INSERT INTO holdtype(
+    navn,
+	max_deltagere,   
+    venteliste,
+    sal_id
 )
 VALUES
 (
 	'Boksning',
+	6,
 	1,
 	2
 ),
 (
-	'Spinning',	
+	'Spinning',
+	7,
 	1,
 	1
 ),
 (
-	'Yoga',	
+	'Yoga',
+	5,	
 	1,
 	3
 );
 
 -- INSERT events
-INSERT INTO events (
-    event_type_id,
-    eventdate,
-    starttime,
-	endtime,
-    instructor_id,
+INSERT INTO hold(
+    holdtype_id,
+    dato,
+    starttid,
+	sluttid,
+    instruktor_id,
     status
 )
 VALUES (
@@ -414,9 +415,9 @@ VALUES (
 
 -- INSERT registrations
 
-INSERT INTO registrations(
-    event_id,
-    member_id,
+INSERT INTO tilmelding(
+    hold_id,
+    medlem_id,
     status,
 	created
 )
@@ -586,11 +587,11 @@ VALUES (
 COMMIT TRANSACTION tran_insert_initial;
 
 -- SELECT ALL FROM ALL TABLES
-SELECT * FROM zipcodes;
+SELECT * FROM postnummer;
 SELECT * FROM center;
-SELECT * FROM rooms;
-SELECT * FROM staff;
-SELECT * FROM members;
-SELECT * FROM event_types;
-SELECT * FROM events;
-SELECT * FROM registrations;
+SELECT * FROM sal;
+SELECT * FROM medarbejder;
+SELECT * FROM medlem;
+SELECT * FROM holdtype;
+SELECT * FROM hold;
+SELECT * FROM tilmelding;

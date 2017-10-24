@@ -1,25 +1,42 @@
 /*
 	INDEX CREATION
 */
-USE eventmanagement;
+USE fitnesscenter;
 GO
 
-CREATE INDEX IDX_zipcode
-ON members(zipcode);
+-- medlem
+CREATE INDEX IDX_tilmeldinger
+ON medlem(fornavn, efternavn, email);
 
-CREATE INDEX IDX_room
-ON event_types(room_id);
+-- alle tabeller på fremmednøgler
 
-CREATE INDEX IDX_event
-ON registrations(event_id);
+CREATE INDEX IDX_medlem_postnr_FK
+ON medlem(postnr);
 
-CREATE INDEX IDX_member
-ON registrations(member_id);
+CREATE INDEX IDX_center_postnr_FK
+ON center(postnr);
 
-CREATE INDEX IDX_eventtype
-ON events(event_type_id);
+CREATE INDEX IDX_sal_center_FK
+ON sal(center_id);
 
-CREATE INDEX IDX_member
-ON events(instructor_id);
+CREATE INDEX IDX_medarbejder_postnr_FK
+ON medarbejder(postnr);
 
+CREATE INDEX IDX_medarbejder_center_FK
+ON medarbejder(center_id);
+
+CREATE INDEX IDX_holdtype_sal_FK
+ON holdtype(sal_id);
+
+CREATE INDEX IDX_tilmelding_hold_FK
+ON tilmelding(hold_id);
+
+CREATE INDEX IDX_tilmelding_medlem_FK
+ON tilmelding(medlem_id);
+
+CREATE INDEX IDX_hold_holdtype_FK
+ON hold(holdtype_id);
+
+CREATE INDEX IDX_hold_instruktor_FK
+ON hold(instruktor_id);
 
